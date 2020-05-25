@@ -89,36 +89,36 @@ paperModel.countDocuments({}).then((err,c)=>{
 // {'id':'0850c64c0da308f2f30ed9f9bca1f6eb4a6423d3'}
 // ];
 
-// jsonfile.readFile('clustered_data.json', function (err, obj) {
+jsonfile.readFile('clustered_data.json', function (err, obj) {
   
-//     obj.forEach(function(paper){
+    obj.forEach(function(paper){
 
-//         // console.log(paper.title)
-//         var puublish_time = paper.publish_time;
-//         if(paper.publish_time == "" || paper.publish_time == "2020-12-31"){
-//             puublish_time="1111-11-11";
-//         }
+        // console.log(paper.title)
+        var puublish_time = paper.publish_time;
+        if(paper.publish_time == "" || paper.publish_time == "2020-12-31"){
+            puublish_time="1111-11-11";
+        }
 
-//         const pM = new paperModel({
-//             paper_id: paper.paper_id,
-//             title: paper.title,
-//             authors: paper.authors,
-//             publish_time: puublish_time,
-//             abstract: paper.abstract,
-//             doi : paper.doi,
-//             clusters: paper.clusters,
-//             related_papers: paper.related
-//         });
+        const pM = new paperModel({
+            paper_id: paper.paper_id,
+            title: paper.title,
+            authors: paper.authors,
+            publish_time: puublish_time,
+            abstract: paper.abstract,
+            doi : paper.doi,
+            clusters: paper.clusters,
+            related_papers: paper.related
+        });
             
-//             pM.save().then((doc)=>{
-//                 console.log(doc);
-//               },(e)=>{
-//                   console.log(e)
-//               });
+            pM.save().then((doc)=>{
+                console.log(doc);
+              },(e)=>{
+                  console.log(e)
+              });
         
      
-//     })
-// })
+    })
+})
 
 
 // 32329
