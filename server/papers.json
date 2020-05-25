@@ -1,0 +1,46 @@
+{
+    "papers": [
+    {
+        "title": "the first paper",
+        "abstract": "this is the abstract of the first paper. ALthough it has no information at the momemnt, but will contain a bigger paragraph later",
+        "topic": "incubation period",
+        "citation": 4
+    },
+    {
+        "title": "the second paper",
+        "abstract": "this is the abstract of the second paper. ALthough it has no information at the momemnt, but will contain a bigger paragraph later",
+        "topic": "incubation period",
+        "citation": 65
+    },
+    {
+        "title": "the third paper",
+        "abstract": "this is the abstract of the third paper. ALthough it has no information at the momemnt, but will contain a bigger paragraph later",
+        "topic": "spread factor",
+        "citation": 6
+    },
+    {
+        "title": "the fourth paper",
+        "abstract": "this is the abstract of the fourth paper. ALthough it has no information at the momemnt, but will contain a bigger paragraph later",
+        "topic": "incubation period",
+        "citation": 13
+    },
+    {
+        "title": "the fifth paper",
+        "abstract": "this is the abstract of the fifth paper. ALthough it has no information at the momemnt, but will contain a bigger paragraph later",
+        "topic": "incubation period",
+        "citation": 7
+    },
+    {
+        "title": "the sixth paper",
+        "abstract": "this is the abstract of the sixth paper. ALthough it has no information at the momemnt, but will contain a bigger paragraph later",
+        "topic": "symptoms",
+        "citation": 4
+    },
+    {
+        "title": "the seventh paper",
+        "abstract": "this is the abstract of the fifth paper. ALthough it has no information at the momemnt, but will contain a bigger paragraph later",
+        "topic": "incubation period",
+        "citation": 9
+    }
+]
+}

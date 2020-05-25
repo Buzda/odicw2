@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<!--
+	Twenty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Kaggle Challenge COVID-19</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+			$("#siteloader").load("assets/countries.html");
+			$("#siteloader2").load("assets/publish_time.html");
+        });
+    </script>
+</head>
+
+<body class="index is-preload">
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header" class="alt">
+			<!--
+			<h1 id="logo"><a href="index.html">Twenty <span>by HTML5 UP</span></a></h1>
+			-->
+		</header>
+
+		<!-- Banner -->
+		<section id="banner">
+
+			<!--
+						".inner" is set up as an inline-block so it automatically expands
+						in both directions to fit whatever's inside it. This means it won't
+						automatically wrap lines, so be sure to use line breaks where
+						appropriate (<br />).
+					-->
+			<div class="inner">
+
+				<header>
+					<h2>----</h2> <!-- Open Dataset AI Research -->
+				</header>
+				<p>COVID-19 Open Research Dataset Challenge (CORD-19)</p>
+				<footer>
+					<ul class="buttons stacked">
+						<li><a href="#main" class="button fit scrolly">Tell Me More</a></li>
+					</ul>
+				</footer>
+
+			</div>
+
+		</section>
+
+		<!-- Main -->
+		<article id="main">
+
+			<header class="special container">
+				<span class="icon solid fa-chart-bar"></span>
+				<h2>////////////////Some text///////////////////</h2>
+				<p>An AI challenge with AI2, CZI, MSR, Georgetown, NIH & The White House. </p>
+			</header>
+
+			<!-- One -->
+			<!-- 	=====================================================================	-->
+			<!-- 	/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/	-->
+			<!-- 	=====================================================================	-->
+			<section class="wrapper style2 container special-alt">
+				<div id="tabbed-content">
+					<ul id="main_button" class="tabs">
+						<li data-target="#search">Start search</li>
+						<li data-target="#Home" class="active">Home</li>
+
+					</ul>
+					<div class="panel active" id="Home">
+						<div id="siteloader">
+						</div>
+						<div id="siteloader2">
+						</div>
+						<!-- <div w3-include-html="countries.html"></div> -->
+						<!-- 	<p>Content for this tab is general plots about all data...</p> -->
+					</div>
+					<div class="panel" id="clickedPaper">
+						<h2>Paper details</h2>
+						<div id="paperID">
+							<ul id="clickedPaperDetails" class="tabs">
+								<!-- <p class="truncate-overflow">Some Title </p>
+								<p class="truncate-overflow"> Some Author</p>
+								<p class="truncate-overflow"> Some Date</p>
+								<p class="truncate-overflow">Abstract:
+									Lorem ipsum dolor sit, amet consectetur adipisicing elit. In sint facilis explicabo voluptatum exercitationem earum. Quibusdam vitae, iusto temporibus corrupti tempore distinctio soluta reiciendis. Ab aspernatur facilis autem
+									temporibus veniam.</p> -->
+							</ul>
+						</div>
+					</div>
+					<div class="panel" id="search">
+						<!--	<p>Content for this tab allows for digging deep into papers...</p> -->
+						<p>Select topic from the 'Choose a topic' window.</p>
+
+						<form id="serial-Number">
+							<div>
+								<!-- <label for="chosenTopic">Choose a topic:</label> -->
+								<select class="select-css truncate-overflow" id="chosenTopic" name="chosenTopic" min="1" placeholder="1" >
+									<option>Choose a topic:</option>
+									<option>Hosts and Immune Responses</option>
+									<option>Vaccines</option>
+									<option>Patient Safety</option>
+									<option>Viruses</option>
+									<option>Molecular Studies</option>
+									<option>Predictive Modelling</option>
+									<option>PCR in Virology</option>
+									<option>Public Health, Services, and Administration</option>
+									<option>Genome Studies</option>
+								</select>
+								<select class="select-css truncate-overflow" id="controlledTAG" name="controlledTAG" placeholder="tags">
+									<!-- <option value="inc">inc</option>
+									<option value="fg factor">fg factor</option> -->
+									
+								  </select>
+								<!-- <select id="chosenTopic" name="chosenTopic">
+									<option value="incubation period">incubation period</option>
+									<option value="spread factor">spread factor</option>
+									<option value="symptoms">symptoms</option>
+									</select> -->
+
+								<!-- <input type="number" id="chosenTopic" name="chosenTopic" min="1" placeholder="1"> -->
+
+							</div>
+
+							<div id="submit_button">
+								<h3 id="numberOfPapersFound"></h3>
+								<li id=submitButtonClicked>Submit</li>
+								<ul id="paper_list">
+									<!-- <p class="single_paper">Paper 1</p>
+									<p class="single_paper">Paper 2</p>
+									<p class="single_paper">Paper 3</p>
+									<p class="single_paper">Paper 4</p> -->
+								</ul>
+
+								<!-- <label for="chosenTopic">cant remember:</label> -->
+								
+								<!-- <input type="number" id="numberOfPapersStream" name="numberOfPapersStream" min="1" max="20" placeholder="1" value="1"> -->
+								<ul id="page_button">
+									<li id=previousPage>Back</li>
+									<output id="stream">1</output>
+									<li id=nextPage>Next</li>		
+								   </ul>
+							
+								<!-- <input type="submit"> -->
+							</div>
+
+
+							<output id="matchedPapers" name="matchedPapers"> </output>
+						</form>
+						<div id="list-div">
+							<ul id="paper_details">
+								<!-- <p class="truncate-overflow">Some Title </p>
+								<p class="truncate-overflow"> Some Author</p>
+								<p class="truncate-overflow"> Some Date</p>
+								<p class="truncate-overflow">Abstract:
+									Lorem ipsum dolor sit, amet consectetur adipisicing elit. In sint facilis explicabo voluptatum exercitationem earum. Quibusdam vitae, iusto temporibus corrupti tempore distinctio soluta reiciendis. Ab aspernatur facilis autem
+									temporibus veniam.</p> -->
+							</ul>
+						</div>
+					</div>
+				</div>
+				<script src="/socket.io/socket.io.js"></script>
+				<script src="index.js"></script>
+
+
+				<footer>
+					<ul class="buttons">
+						<!-- <li><a href="#" class="button">Find Out More</a></li> !-->
+					</ul>
+				</footer>
+
+	</div>
+	<div class="col-4 col-12-narrower imp-narrower">
+
+		<ul class="featured-icons">
+
+		</ul>
+
+
+		</section>
+
+		<!-- 	=====================================================================	-->
+		<!-- 	/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/	-->
+		<!-- 	=====================================================================	-->
+
+		<!-- Two -->
+		<!--
+			<section class="wrapper style1 container special">
+				<div class="row">
+					<div class="col-4 col-12-narrower">
+
+						<section>
+							<span class="icon solid featured fa-check"></span>
+							<header>
+								<h3>This is Something</h3>
+							</header>
+							<p>Sed tristique purus vitae volutpat ultrices. Aliquam eu elit eget arcu commodo suscipit dolor nec nibh. Proin a ullamcorper elit, et sagittis turpis. Integer ut fermentum.</p>
+						</section>
+
+					</div>
+					<div class="col-4 col-12-narrower">
+
+						<section>
+							<span class="icon solid featured fa-check"></span>
+							<header>
+								<h3>Also Something</h3>
+							</header>
+							<p>Sed tristique purus vitae volutpat ultrices. Aliquam eu elit eget arcu commodo suscipit dolor nec nibh. Proin a ullamcorper elit, et sagittis turpis. Integer ut fermentum.</p>
+						</section>
+
+					</div>
+					<div class="col-4 col-12-narrower">
+
+						<section>
+							<span class="icon solid featured fa-check"></span>
+							<header>
+								<h3>Probably Something</h3>
+							</header>
+							<p>Sed tristique purus vitae volutpat ultrices. Aliquam eu elit eget arcu commodo suscipit dolor nec nibh. Proin a ullamcorper elit, et sagittis turpis. Integer ut fermentum.</p>
+						</section>
+
+					</div>
+				</div>
+			</section>
+-->
+		<!-- Three -->
+
+
+		</article>
+
+		<!-- CTA -->
+		<section id="cta">
+
+			<header>
+				<h2>Make the research process easier</h2>
+				<!-- <p>Proin a ullamcorper elit, et sagittis turpis integer ut fermentum.</p> -->
+			</header>
+			<footer>
+				<!--
+				<ul class="buttons">
+					<li><a href="#" class="button primary">Take My Money</a></li>
+					<li><a href="#" class="button">LOL Wut</a></li>
+				</ul>
+			-->
+			</footer>
+
+		</section>
+
+		<!-- Footer -->
+		<footer id="footer">
+
+			<!--
+			<ul class="icons">
+				<li><a href="#" class="icon brands circle fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands circle fa-facebook-f"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands circle fa-google-plus-g"><span class="label">Google+</span></a></li>
+				<li><a href="#" class="icon brands circle fa-github"><span class="label">Github</span></a></li>
+				<li><a href="#" class="icon brands circle fa-dribbble"><span class="label">Dribbble</span></a></li>
+			</ul>
+		-->
+
+			<ul class="copyright">
+				<li>&copy; ODAIR Ltd.</li>
+				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
