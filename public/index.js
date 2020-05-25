@@ -232,7 +232,7 @@ previousStream.addEventListener('click',(e)=>{
 var clickedRelatedPaper = function(e,relatedPaper){
   // console.log(e.target.textContent)
   socket.emit('findPaperById', {
-    paper_id: e.target.textContent,
+    title: e.target.textContent,
   }, function(retrievePaper){
     // console.log(retrievePaper[0]);
     const clickedPaperDetails = document.querySelector('#clickedPaperDetails');
@@ -279,6 +279,10 @@ var clickedRelatedPaper = function(e,relatedPaper){
       //  console.log(relatedPaper)
        var related_paper_N = document.createElement('li');
        related_paper_N.textContent = relatedPaper.id;
+
+      //  var related_paper_N_author = document.createElement('span');
+      //  related_paper_N_author.textContent = relatedPaper.auth;
+      //  related_paper_N.appendChild(related_paper_N_author);
 
        related_paper_N.addEventListener('click', (e) => {
 
