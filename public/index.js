@@ -24,8 +24,8 @@ myChosenTopic.addEventListener('change',function(e){
   const controlledTAG = document.querySelector('select[id="controlledTAG"]');
   controlledTAG.innerHTML = "";
   var tags = {
-    "Hosts and Immune Responses": ["virus","vaccine"],
-    "Vaccines":["modelling"],
+    "Hosts and Immune Responses": ["COVID-19","vaccine"],
+    "Vaccines":["SARS-CoV-1","COVID-19"],
     "Patient Safety": ["prediction"],
     "Viruses": ["prediction"],
     "Molecular Studies": ["prediction"],
@@ -57,7 +57,7 @@ var onSubmitButton = function(e){
   
   var chosenTopic = addForm.querySelector('select[id="chosenTopic"]').value;
   var chasenTag = addForm.querySelector('select[id="controlledTAG"]').value;
-  // console.log(chasenTag,'chasenTag')
+   console.log(chasenTag,'chasenTag')
 
   // console.log(e.target.id,'which event')
   if(e.target.id == 'submitButtonClicked'){
@@ -69,17 +69,17 @@ var onSubmitButton = function(e){
   var streamLabel = addForm.querySelector('output[id="stream"]').value;
 
   if(e.target.id == 'nextPage'){
-    console.log(streamLabel,'streamLabel')
+    // console.log(streamLabel,'streamLabel')
     streamLabel = Number(streamLabel)+1;
     addForm.querySelector('output[id="stream"]').value = streamLabel;
-    console.log(streamLabel,'streaLabel')
+    // console.log(streamLabel,'streaLabel')
   }
 
   if(e.target.id == 'previousPage' && streamLabel>1){
-    console.log(streamLabel,'streamLabel')
+    // console.log(streamLabel,'streamLabel')
     streamLabel = Number(streamLabel)-1;
     addForm.querySelector('output[id="stream"]').value = streamLabel;
-    console.log(streamLabel,'streaLabel')
+    // console.log(streamLabel,'streaLabel')
   }
  
 
@@ -105,6 +105,7 @@ var onSubmitButton = function(e){
 
          socket.emit('numberOfPapersForTopic', {
           chosenTopic: chosenTopic,
+          chasenTag: chasenTag
         }, function(numberOfPapers){
           const numberOfPapersFound = document.querySelector('#numberOfPapersFound');
           // var numberOfPapersFound = document.createElement('p')
@@ -115,7 +116,8 @@ var onSubmitButton = function(e){
 
   socket.emit('searchTopic', {
    chosenTopic: chosenTopic,
-   numberOfPapersStream: streamLabel
+   numberOfPapersStream: streamLabel,
+   chasenTag: chasenTag
  }, function(retrievePapers){
 
   //  console.log(retrievePapers);
@@ -180,14 +182,23 @@ var onSubmitButton = function(e){
            var relatedPapers;
            var related_papers_list = document.createElement('ol')
             JSON.parse(e.target.getAttribute("data")).related_papers.forEach(relatedPaper =>{
-              console.log(e.target.getAttribute("data"))
+              // console.log(e.target.getAttribute("data"))
               // console.log(relatedPaper)
               var related_paper_N = document.createElement('li');
-              related_paper_N.textContent = relatedPaper.id;
-              console.log(relatedPaper)
+              related_paper_N.textContent = "Title: " + relatedPaper.id;
+              
+              // console.log(relatedPaper)
+              var related_paper_N_author = document.createElement('p');
+              related_paper_N_author.textContent = "Authors: " + relatedPaper.auth;
+              related_paper_N_author.setAttribute("title",relatedPaper.id)
+              related_paper_N.appendChild(related_paper_N_author);
+              related_paper_N.setAttribute("title",relatedPaper.id)
+              if(relatedPaper.auth == ""){
+                related_paper_N_author.textContent = "Authors: Not Found"
+              }
 
               related_paper_N.addEventListener('click', (e) => {
-
+                
                 clickedRelatedPaper(e,relatedPaper)
               });
               related_papers_list.appendChild(related_paper_N);
@@ -211,28 +222,22 @@ var onSubmitButton = function(e){
  });
 }
 
-// var paperStream = document.querySelector('#numberOfPapersStream');
-// paperStream.addEventListener('change',(e)=>{
-//   console.log(e.target,'print the change')
-//   onSubmitButton(e);
-// });
-
 var nextStream = document.querySelector('#nextPage');
 nextStream.addEventListener('click',(e)=>{
-  console.log(e.target,'print the change')
+  // console.log(e.target,'print the change')
   onSubmitButton(e);
 });
 
 var previousStream = document.querySelector('#previousPage');
 previousStream.addEventListener('click',(e)=>{
-  console.log(e.target,'print the change')
+  // console.log(e.target,'print the change')
   onSubmitButton(e);
 });
 
 var clickedRelatedPaper = function(e,relatedPaper){
-  // console.log(e.target.textContent)
+  //  console.log(e.target.title,"clicked related paper")
   socket.emit('findPaperById', {
-    title: e.target.textContent,
+    title: e.target.title,
   }, function(retrievePaper){
     // console.log(retrievePaper[0]);
     const clickedPaperDetails = document.querySelector('#clickedPaperDetails');
@@ -278,11 +283,18 @@ var clickedRelatedPaper = function(e,relatedPaper){
     retrievePaper[0].related_papers.forEach(relatedPaper =>{
       //  console.log(relatedPaper)
        var related_paper_N = document.createElement('li');
-       related_paper_N.textContent = relatedPaper.id;
+       related_paper_N.textContent = "Title: " + relatedPaper.id;
+       
 
-      //  var related_paper_N_author = document.createElement('span');
-      //  related_paper_N_author.textContent = relatedPaper.auth;
-      //  related_paper_N.appendChild(related_paper_N_author);
+       var related_paper_N_author = document.createElement('p');
+       related_paper_N_author.textContent = "Authors: " + relatedPaper.auth;
+       related_paper_N_author.setAttribute("title",relatedPaper.id)
+       related_paper_N.appendChild(related_paper_N_author);
+       related_paper_N.setAttribute("title",relatedPaper.id)
+
+       if(relatedPaper.auth == ""){
+        related_paper_N_author.textContent = "Authors: Not Found"
+      }
 
        related_paper_N.addEventListener('click', (e) => {
 

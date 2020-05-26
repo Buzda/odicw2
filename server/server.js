@@ -28,9 +28,10 @@ io.on('connection', (socket) => {
         // console.log('looking for papers in: ',message.chosenTopic);
         var numberOfPapersToShow = 10;
         var toSkip = (message.numberOfPapersStream-1)*numberOfPapersToShow;
-
-        paperModel.find({clusters:message.chosenTopic}).sort({publish_time:'desc'}).skip(toSkip).limit(numberOfPapersToShow).then((doc)=>{
-            // console.log(doc);
+        console.log(message.chasenTag,"chasenTag")
+       
+        paperModel.find( {$and:[{clusters:message.chosenTopic},{tags:message.chasenTag}]}).sort({publish_time:'desc'}).skip(toSkip).limit(numberOfPapersToShow).then((doc)=>{
+            console.log(doc);
             callback(doc);
         },(e)=>{
             console.log(e)
@@ -51,7 +52,7 @@ io.on('connection', (socket) => {
       socket.on('numberOfPapersForTopic', (message, callback) => {
         console.log('looking for number of papers with Topic: ',message.chosenTopic);
 
-        paperModel.countDocuments({clusters:message.chosenTopic}).then((numberOfPapers)=>{
+        paperModel.countDocuments({$and:[{clusters:message.chosenTopic},{tags:message.chasenTag}]}).then((numberOfPapers)=>{
             console.log(numberOfPapers);
             callback(numberOfPapers);
         },(e)=>{
@@ -86,36 +87,35 @@ paperModel.countDocuments({}).then((err,c)=>{
 // });
 
 
-jsonfile.readFile('clustered_data_final.json', function (err, obj) {
+// jsonfile.readFile('myData.json', function (err, obj) {
   
-    obj.forEach(function(paper){
+//     obj.forEach(function(paper){
 
-        // console.log(paper.title)
-        var puublish_time = paper.publish_time;
-        if(paper.publish_time == "" || paper.publish_time == "2020-12-31"){
-            puublish_time="1111-11-11";
-        }
+//         // console.log(paper.title)
+//         var puublish_time = paper.publish_time;
+//         if(paper.publish_time == "" || paper.publish_time == "2020-12-31"){
+//             puublish_time="1111-11-11";
+//         }
 
-        const pM = new paperModel({
-            paper_id: paper.paper_id,
-            title: paper.title,
-            authors: paper.authors,
-            publish_time: puublish_time,
-            abstract: paper.abstract,
-            doi : paper.doi,
-            clusters: paper.clusters,
-            related_papers: paper.related
-        });
+//         const pM = new paperModel({
+//             paper_id: paper.paper_id,
+//             title: paper.title,
+//             authors: paper.authors,
+//             publish_time: puublish_time,
+//             abstract: paper.abstract,
+//             doi : paper.doi,
+//             clusters: paper.clusters,
+//             related_papers: paper.related,
+//             tags: paper.tags
+//         });
             
-            pM.save().then((doc)=>{
-                console.log(doc);
-              },(e)=>{
-                  console.log(e)
-              });
-        
-     
-    })
-})
+//             pM.save().then((doc)=>{
+//                 console.log(doc);
+//               },(e)=>{
+//                   console.log(e)
+//               });
+//     })
+// })
 
 
 // 32329

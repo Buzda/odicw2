@@ -12,7 +12,8 @@ const paperSchema = new Schema({
     abstract: String,
     doi: String,
     clusters: String,
-    related_papers: Array
+    related_papers: Array,
+    tags: String
 });
 
 const paperModel = mongoose.model('OpenData', paperSchema);
