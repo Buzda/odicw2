@@ -24,15 +24,15 @@ myChosenTopic.addEventListener('change',function(e){
   const controlledTAG = document.querySelector('select[id="controlledTAG"]');
   controlledTAG.innerHTML = "";
   var tags = {
-    "Hosts and Immune Responses": ["COVID-19","vaccine"],
-    "Vaccines":["SARS-CoV-1","COVID-19"],
-    "Patient Safety": ["prediction"],
-    "Viruses": ["prediction"],
-    "Molecular Studies": ["prediction"],
-    "Predictive Modelling": ["prediction"],
-    "PCR in Virology": ["prediction"],
-    "Public Health, Services, and Administration": ["prediction"],
-    "Genome Studies": ["prediction"]
+    "Hosts and Immune Responses": ["", "COVID-19","SARS-CoV-1", "SARS-CoV-2", "MERS-CoV"],
+    "Vaccines":["", "COVID-19","SARS-CoV-1", "SARS-CoV-2", "MERS-CoV"],
+    "Patient Safety": ["", "COVID-19","SARS-CoV-1", "SARS-CoV-2", "MERS-CoV"],
+    "Viruses": ["", "COVID-19","SARS-CoV-1", "SARS-CoV-2", "MERS-CoV"],
+    "Molecular Studies": ["", "COVID-19","SARS-CoV-1", "SARS-CoV-2", "MERS-CoV"],
+    "Predictive Modelling": ["", "COVID-19","SARS-CoV-1", "SARS-CoV-2", "MERS-CoV"],
+    "PCR in Virology": ["", "COVID-19","SARS-CoV-1", "SARS-CoV-2", "MERS-CoV"],
+    "Public Health, Services, and Administration": ["", "COVID-19","SARS-CoV-1", "SARS-CoV-2", "MERS-CoV"],
+    "Genome Studies": ["", "COVID-19","SARS-CoV-1", "SARS-CoV-2", "MERS-CoV"]
   };
   selectedClass=e.target.value;
   // console.log(tags[selectedClass],'tags[selectedClass]');
@@ -81,19 +81,6 @@ var onSubmitButton = function(e){
     addForm.querySelector('output[id="stream"]').value = streamLabel;
     // console.log(streamLabel,'streaLabel')
   }
- 
-
-  // if(chosenTopic=='topic 1'){
-  //   chosenTopic=1;
-  // }
-  // if(chosenTopic=='topic 2'){
-  //   chosenTopic=2;
-  // }
-  // if(chosenTopic=='topic 3'){
-  //   chosenTopic=3;
-  // }
-  // console.log('chosenTopic',chosenTopic);
-  // console.log('numberOfPapersStream',numberOfPapersStream);
 
 
   const ul = document.querySelector('#paper_list');
