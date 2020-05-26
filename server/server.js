@@ -84,9 +84,9 @@ paperModel.countDocuments({}).then((err,c)=>{
       console.log(e)
   });
 
-// mongoose.connection.collections.opendatas.drop(function() {
-//     console.log("collection dropped")
-// });
+mongoose.connection.collections.opendatas.drop(function() {
+    console.log("collection dropped")
+});
 
 
 // jsonfile.readFile('myData.json', function (err, obj) {
