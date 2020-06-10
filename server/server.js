@@ -96,33 +96,35 @@ server.listen(port, () => {
 // });
 
 // .......................... Save myData.json to MongoDB ........................
-// jsonfile.readFile('myData.json', function (err, obj) {
+jsonfile.readFile('myData.json', function (err, obj) {
   
-//     obj.forEach(function(paper){
+    obj.forEach(function(paper){
 
-//         // console.log(paper.title)
-//         var puublish_time = paper.publish_time;
-//         if(paper.publish_time == "" || paper.publish_time == "2020-12-31"){
-//             puublish_time="1111-11-11";
-//         }
+        var puublish_time = paper.publish_time;
+        // some dates are either empty or set to a future data which is wrong, so set all of them to
+        // be 1111-11-11 and deal with it separately in the fronend
+        if(paper.publish_time == "" || paper.publish_time == "2020-12-31"){
+            puublish_time="1111-11-11";
+        }
 
-//         const pM = new paperModel({
-//             paper_id: paper.paper_id,
-//             title: paper.title,
-//             authors: paper.authors,
-//             publish_time: puublish_time,
-//             abstract: paper.abstract,
-//             doi : paper.doi,
-//             clusters: paper.clusters,
-//             related_papers: paper.related,
-//             tags: paper.tags
-//         });
+        // model 
+        const pM = new paperModel({
+            paper_id: paper.paper_id,
+            title: paper.title,
+            authors: paper.authors,
+            publish_time: puublish_time,
+            abstract: paper.abstract,
+            doi : paper.doi,
+            clusters: paper.clusters,
+            related_papers: paper.related,
+            tags: paper.tags
+        });
             
-//             pM.save().then((doc)=>{
-//                 console.log(doc);
-//               },(e)=>{
-//                   console.log(e)
-//               });
-//     })
-// })
+            pM.save().then((doc)=>{
+                console.log(doc);
+              },(e)=>{
+                  console.log(e)
+              });
+    })
+})
 

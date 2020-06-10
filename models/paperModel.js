@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Create a Schema and a Model
-
 const paperSchema = new Schema({
     paper_id: String,
     title: String,
