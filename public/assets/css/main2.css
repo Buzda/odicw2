@@ -3374,7 +3374,7 @@ h1, h2{
     margin: 10px 0;
 }
 
-#serial-Number #numberOfPapersStream{
+#filter-form #numberOfPapersStream{
     width: 10%;
     text-align: center;
     margin: 10px 0;
